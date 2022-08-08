@@ -1,0 +1,40 @@
+# 项目名称配置
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: smart-moon
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springdb?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: admin123
+
+# tomcat服务端口配置
+server:
+  port: 8080
+# ===== 自定义swagger配置 ===== #
+swagger:
+  enable: true
+  application-name: ${spring.application.name}
+  application-version: 1.0
+  application-description: springfox swagger 3.0整合Demo
+  try-host: http://localhost:${server.port}
+
+knife4j:
+  # 开启增强配置
+  enable: true
+  # 开启生产环境屏蔽
+  # production: true
+  documents:
+    - group: 2.0
+      name: 2.0分组
+      # 某一个文件夹下所有的.md文件
+      locations: classpath:markdown/*
+  setting:
+    language: zh-CN
+    enableSwaggerModels: true
+    enableDocumentManage: true
+    swaggerModelName: 实体类列表
+    enableRequestCache: true
